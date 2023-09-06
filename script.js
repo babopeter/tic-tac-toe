@@ -17,6 +17,27 @@ const gameBoard = (function () {
             document.querySelector('.gameboard').appendChild(square);
         }
     }
+
+    // create a function that adds an X to the squares on mouseclick
+    addX = function() {
+        const squares = document.querySelectorAll('.square');
+        squares.forEach(square => {
+            square.addEventListener('click', function() {
+                square.textContent = 'X';
+            })
+        })
+    }
+
+    addO = function() {
+        const squares = document.querySelectorAll('.square');
+        squares.forEach(square => {
+            square.addEventListener('click', function() {
+                square.textContent = 'O';
+            })
+        })
+    }
+
+
 })();
 
 
@@ -24,5 +45,11 @@ const gameBoard = (function () {
 const player = (name, marker) => {
     return {name, marker};
 };
+
+const game = (function() {
+    let _player1 = player('Player 1', 'X');
+    let _player2 = player('Player 2', 'O');
+    // let _currentPlayer = _player1;
+})();
 
 drawBoard();
