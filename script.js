@@ -2,15 +2,22 @@
 // if you need 1 (gameBoard, displayController) use a module
 // if you need multiple (players) create them with factories
 
+// player factory
+const Player = (name, marker) => {
+    return {name, marker};
+};
 
 // gameboard module
 
-const gameBoard = (function () {
-    let _board = new Array(9);
+const Gameboard = (function () {
+    let gameboard = new Array(9);
+    let player1 = Player('Player 1', 'X');
+    let player2 = Player('Player 2', 'O');
+    let currentPlayer = player1;
 
     drawBoard = function() {
         // create a div for each square
-        for (let i = 0; i < _board.length; i++) {
+        for (let i = 0; i < gameboard.length; i++) {
             const square = document.createElement('div');
             square.classList.add('square');
             square.setAttribute('id', i);
@@ -18,43 +25,16 @@ const gameBoard = (function () {
         }
     }
 
-    // create a function that adds an X to the squares on mouseclick
-    addX = function() {
-        const squares = document.querySelectorAll('.square');
-        squares.forEach(square => {
-            square.addEventListener('click', function() {
-                square.textContent = 'X';
-            })
-        })
-    }
-
-    addO = function() {
-        const squares = document.querySelectorAll('.square');
-        squares.forEach(square => {
-            square.addEventListener('click', function() {
-                square.textContent = 'O';
-            })
-        })
-    }
-    
-})();
-
-
-// player factory
-const player = (name, marker) => {
-    return {name, marker};
-};
-
-const game = (function() {
-    let _player1 = player('Player 1', 'X');
-    let _player2 = player('Player 2', 'O');
-    let _currentPlayer = _player1;
-    playerTurn = function() {
+    placeMarker = function() {
         const squares = document.querySelectorAll('.square');
         squares.forEach(square => {
             square.addEventListener('click', function() {
                 if (square.textContent === '') {
-                    square.textContent = _currentPlayer.marker;
+                    square.textContent = currentPlayer.marker;
+                    gameboard[square.id] = currentPlayer.marker;
+                    
+                    console.info(gameboard);
+
                     playerSwitch();
                 }
             })
@@ -62,13 +42,21 @@ const game = (function() {
     }
 
     playerSwitch = function() {
-        if (_currentPlayer === _player1) {
-            _currentPlayer = _player2;
+        if (currentPlayer === player1) {
+            currentPlayer = player2;
         } else {
-            _currentPlayer = _player1;
+            currentPlayer = player1;
         }
     }
 })();
 
+
+
+const Game = (function() {
+    // game logic
+    
+})();
+
+
 drawBoard();
-playerTurn();
+placeMarker();
