@@ -36,8 +36,7 @@ const gameBoard = (function () {
             })
         })
     }
-
-
+    
 })();
 
 
@@ -49,7 +48,27 @@ const player = (name, marker) => {
 const game = (function() {
     let _player1 = player('Player 1', 'X');
     let _player2 = player('Player 2', 'O');
-    // let _currentPlayer = _player1;
+    let _currentPlayer = _player1;
+    playerTurn = function() {
+        const squares = document.querySelectorAll('.square');
+        squares.forEach(square => {
+            square.addEventListener('click', function() {
+                if (square.textContent === '') {
+                    square.textContent = _currentPlayer.marker;
+                    playerSwitch();
+                }
+            })
+        })
+    }
+
+    playerSwitch = function() {
+        if (_currentPlayer === _player1) {
+            _currentPlayer = _player2;
+        } else {
+            _currentPlayer = _player1;
+        }
+    }
 })();
 
 drawBoard();
+playerTurn();
