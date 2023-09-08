@@ -9,13 +9,13 @@ const Player = (name, marker) => {
 
 // gameboard module
 
-const Gameboard = (function () {
+const Gameboard = (() =>{
     let gameboard = new Array(9);
     let player1 = Player('Player 1', 'X');
     let player2 = Player('Player 2', 'O');
     let currentPlayer = player1;
 
-    drawBoard = function() {
+    const drawBoard = () => {
         // create a div for each square
         for (let i = 0; i < gameboard.length; i++) {
             const square = document.createElement('div');
@@ -24,8 +24,10 @@ const Gameboard = (function () {
             document.querySelector('.gameboard').appendChild(square);
         }
     }
+    
+    // const getBoard = () => gameboard;
 
-    placeMarker = function() {
+    const placeMarker = () =>{
         const squares = document.querySelectorAll('.square');
         squares.forEach(square => {
             square.addEventListener('click', function() {
@@ -48,15 +50,17 @@ const Gameboard = (function () {
             currentPlayer = player1;
         }
     }
+
+
+    return {drawBoard, placeMarker};
+
 })();
 
 
 
 const Game = (function() {
     // game logic
+    Gameboard.drawBoard();
+    Gameboard.placeMarker();
     
 })();
-
-
-drawBoard();
-placeMarker();
