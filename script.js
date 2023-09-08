@@ -14,6 +14,11 @@ const Gameboard = (() =>{
     let player1 = Player('Player 1', 'X');
     let player2 = Player('Player 2', 'O');
     let currentPlayer = player1;
+    const winCombos = [
+        [0,1,2], [3,4,5], [6,7,8], // horizontal
+        [0,3,6], [1,4,7], [2,5,8], // vertical
+        [0,4,8], [2,4,6] // diagonal
+    ];
 
     const drawBoard = () => {
         // create a div for each square
@@ -25,7 +30,7 @@ const Gameboard = (() =>{
         }
     }
     
-    // const getBoard = () => gameboard;
+    const getBoard = () => gameboard;
 
     const placeMarker = () =>{
         const squares = document.querySelectorAll('.square');
@@ -43,7 +48,7 @@ const Gameboard = (() =>{
         })
     }
 
-    playerSwitch = function() {
+    const playerSwitch = () => {
         if (currentPlayer === player1) {
             currentPlayer = player2;
         } else {
@@ -52,7 +57,7 @@ const Gameboard = (() =>{
     }
 
 
-    return {drawBoard, placeMarker};
+    return {drawBoard, getBoard, placeMarker};
 
 })();
 
@@ -62,5 +67,8 @@ const Game = (function() {
     // game logic
     Gameboard.drawBoard();
     Gameboard.placeMarker();
+
+
+
     
 })();
