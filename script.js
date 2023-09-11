@@ -14,6 +14,8 @@ const Gameboard = (() =>{
     let player1 = Player('Player 1', 'X');
     let player2 = Player('Player 2', 'O');
     let currentPlayer = player1;
+    let gameOver = false;
+    const winner = document.querySelector('.announce-winner-text');
     const winCombos = [
         [0,1,2], [3,4,5], [6,7,8], // horizontal
         [0,3,6], [1,4,7], [2,5,8], // vertical
@@ -39,10 +41,11 @@ const Gameboard = (() =>{
                 if (square.textContent === '') {
                     square.textContent = currentPlayer.marker;
                     gameboard[square.id] = currentPlayer.marker;
-                    
-                    console.info(gameboard);
                     checkWin();
                     playerSwitch();
+                    if (gameOver) {
+                        setTimeout(resetBoard, 1000);
+                    }
                 }
             })
         })
@@ -57,22 +60,36 @@ const Gameboard = (() =>{
     }
 
     const checkWin = () => {
-        // check if any of the win combos are true
-        // if true, end game
-        // if false, continue
         if (winCombos.some(combo => {
             return combo.every(index => {
                 return gameboard[index] === currentPlayer.marker;
             })
         })) {
             console.log(`${currentPlayer.name} wins!`);
+            gameOver = true;
+            winner.textContent = `${currentPlayer.name} wins!`;
+            console.log(gameOver);
         } else if (!gameboard.includes(undefined)) {
             console.log('Tie game!');
+            gameOver = true;
+            winner.textContent = 'Tie game!';
         }
+
     }
 
-
-    return {drawBoard, getBoard, placeMarker, checkWin};
+    const resetBoard = () => {
+        // reset the gameboard
+        // reset the player
+        // reset the display
+        gameboard = new Array(9);
+        currentPlayer = player1;
+        gameOver = false;
+        document.querySelectorAll('.square').forEach(square => {
+            square.textContent = '';
+        });
+        winner.textContent = '';
+    }
+    return {drawBoard, getBoard, placeMarker, checkWin, resetBoard};
 
 })();
 
@@ -82,7 +99,4 @@ const Game = (function() {
     // game logic
     Gameboard.drawBoard();
     Gameboard.placeMarker();
-
-
-    
 })();
