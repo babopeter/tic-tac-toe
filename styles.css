@@ -1,9 +1,15 @@
+body {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr 1fr;
+}
+
 .gameboard {
+    grid-row: 1 / 2;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     width: 330px;
-    height: 330px;
     justify-items: center;
     align-items: center;
     margin: 0 auto;
@@ -17,7 +23,6 @@
     border: 5px solid black;
     background-color: grey;
     margin: 10px;
-    float: left;
     display: inline-block;
     border-radius: 10px;
     text-align: center;
@@ -25,4 +30,15 @@
     font-size: 50px;
     color: white;
     font-family: Arial;
+}
+
+.playerturn-text {
+    grid-row: 2 / 3;
+    text-align: center;
+    font-size: 30px;
+    font-family: Arial;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 250px);
+    justify-content: center;
+    
 }
