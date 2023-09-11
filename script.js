@@ -41,7 +41,7 @@ const Gameboard = (() =>{
                     gameboard[square.id] = currentPlayer.marker;
                     
                     console.info(gameboard);
-
+                    checkWin();
                     playerSwitch();
                 }
             })
@@ -56,8 +56,21 @@ const Gameboard = (() =>{
         }
     }
 
+    const checkWin = () => {
+        // check if any of the win combos are true
+        // if true, end game
+        // if false, continue
+        if (winCombos.some(combo => {
+            return combo.every(index => {
+                return gameboard[index] === currentPlayer.marker;
+            })
+        })) {
+            console.log(`${currentPlayer.name} wins!`);
+        }
+    }
 
-    return {drawBoard, getBoard, placeMarker};
+
+    return {drawBoard, getBoard, placeMarker, checkWin};
 
 })();
 
@@ -67,7 +80,6 @@ const Game = (function() {
     // game logic
     Gameboard.drawBoard();
     Gameboard.placeMarker();
-
 
 
     
