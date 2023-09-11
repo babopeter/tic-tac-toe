@@ -66,6 +66,8 @@ const Gameboard = (() =>{
             })
         })) {
             console.log(`${currentPlayer.name} wins!`);
+        } else if (!gameboard.includes(undefined)) {
+            console.log('Tie game!');
         }
     }
 
