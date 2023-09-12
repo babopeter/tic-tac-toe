@@ -11,10 +11,24 @@
 <body>
     <h1>Tic Tac Toe</h1>
     <div class="gameboard"></div>
+    <dialog id="player-dialog">
+        <form id="selectplayer">
+            <label for="player1">Player 1 (X)</label>
+            <input type="text" id="player1" name="player1" placeholder="Player 1">
+            <label for="player2">Player 2 (O)</label>
+            <input type="text" id="player2" name="player2" placeholder="Player 2">
+            <input type="submit" value="Start Game" id="start-game">
+        </form>
+    </dialog>
+    <p>
+        <button id="show-form">Select Players</button>
+    </p>
     <div class="playerturn">
         <div class="playerturn-text">
-            <p>Player 1: X</p>
-            <p>Player 2: O</p>
+            <p>Player 1 (X): </p>
+            <p id="player1-name"></p>
+            <p>Player 2 (O): </p>
+            <p id="player2-name"></p>
         </div>
     </div>
     <div class="gameover">
