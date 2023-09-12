@@ -39,7 +39,7 @@ const Gameboard = (() =>{
                     checkWin();
                     playerSwitch();
                     if (gameOver) {
-                        setTimeout(resetBoard, 1000);
+                        setTimeout(resetBoard, 2000);
                     }
                 }
             })
