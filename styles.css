@@ -46,6 +46,19 @@ h1 {
     font-family: Arial;
 }
 
+#selectplayer {
+    grid-row: 3 / 4;
+    grid-column: 1 / 2;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    justify-items: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 10px;
+    gap: 10px;
+}
+
 .playerturn-text {
     grid-row: 2 / 3;
     text-align: center;
