@@ -85,6 +85,28 @@ const Gameboard = (() =>{
 
 
 const Game = (function() {
+    const showForm = document.getElementById('show-form');
+    const playerDialog = document.getElementById('player-dialog');
+    const startGame = document.getElementById('start-game');
+    const player1 = document.getElementById('player1');
+    const player2 = document.getElementById('player2');
+    const player1Name = document.getElementById('player1-name');
+    const player2Name = document.getElementById('player2-name');
+
     Gameboard.drawBoard();
     Gameboard.placeMarker();
+
+    showForm.addEventListener('click', function() {
+        playerDialog.showModal();
+    });
+
+    startGame.addEventListener('click', (event) => {
+        playerDialog.close();
+        event.preventDefault();
+        console.log('Game started'); //logs
+        player1Name.textContent = player1.value;
+        player2Name.textContent = player2.value;
+        console.log(player1.value);
+        console.log(player2.value);
+    });
 })();
