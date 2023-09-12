@@ -1,14 +1,9 @@
-// use a module or factory for everything
-// if you need 1 (gameBoard, displayController) use a module
-// if you need multiple (players) create them with factories
-
 // player factory
 const Player = (name, marker) => {
     return {name, marker};
 };
 
 // gameboard module
-
 const Gameboard = (() =>{
     let gameboard = new Array(9);
     let player1 = Player('Player 1', 'X');
@@ -65,12 +60,9 @@ const Gameboard = (() =>{
                 return gameboard[index] === currentPlayer.marker;
             })
         })) {
-            console.log(`${currentPlayer.name} wins!`);
             gameOver = true;
             winner.textContent = `${currentPlayer.name} wins!`;
-            console.log(gameOver);
         } else if (!gameboard.includes(undefined)) {
-            console.log('Tie game!');
             gameOver = true;
             winner.textContent = 'Tie game!';
         }
@@ -78,9 +70,6 @@ const Gameboard = (() =>{
     }
 
     const resetBoard = () => {
-        // reset the gameboard
-        // reset the player
-        // reset the display
         gameboard = new Array(9);
         currentPlayer = player1;
         gameOver = false;
@@ -96,7 +85,6 @@ const Gameboard = (() =>{
 
 
 const Game = (function() {
-    // game logic
     Gameboard.drawBoard();
     Gameboard.placeMarker();
 })();
