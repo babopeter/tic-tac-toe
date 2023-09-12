@@ -5,15 +5,25 @@
 body {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 2fr 1fr;
+    grid-template-rows: 100px 2fr 1fr;
+}
+
+h1 {
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+    text-align: center;
+    font-size: 50px;
+    font-family: Arial;
+    margin: 0;
 }
 
 .gameboard {
-    grid-row: 1 / 2;
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    width: 330px;
+    /* width: 330px; */
     justify-items: center;
     align-items: center;
     margin: 0 auto;
