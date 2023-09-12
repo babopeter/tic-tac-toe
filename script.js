@@ -103,10 +103,7 @@ const Game = (function() {
     startGame.addEventListener('click', (event) => {
         playerDialog.close();
         event.preventDefault();
-        console.log('Game started'); //logs
         player1Name.textContent = player1.value;
         player2Name.textContent = player2.value;
-        console.log(player1.value);
-        console.log(player2.value);
     });
 })();
