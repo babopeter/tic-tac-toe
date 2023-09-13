@@ -3,14 +3,19 @@ const Player = (name, marker) => {
     return {name, marker};
 };
 
+let player1 = Player('Player 1', 'X');
+let player2 = Player('Player 2', 'O');
+
 // gameboard module
 const Gameboard = (() =>{
     let gameboard = new Array(9);
-    let player1 = Player('Player 1', 'X');
-    let player2 = Player('Player 2', 'O');
+    // let player1 = Player('Player 1', 'X');
+    // let player2 = Player('Player 2', 'O');
     let currentPlayer = player1;
     let gameOver = false;
     const winner = document.querySelector('.announce-winner-text');
+
+
     const winCombos = [
         [0,1,2], [3,4,5], [6,7,8], // horizontal
         [0,3,6], [1,4,7], [2,5,8], // vertical
@@ -88,8 +93,8 @@ const Game = (function() {
     const showForm = document.getElementById('show-form');
     const playerDialog = document.getElementById('player-dialog');
     const startGame = document.getElementById('start-game');
-    const player1 = document.getElementById('player1');
-    const player2 = document.getElementById('player2');
+    const player1Input = document.getElementById('player1-input');
+    const player2Input = document.getElementById('player2-input');
     const player1Name = document.getElementById('player1-name');
     const player2Name = document.getElementById('player2-name');
 
@@ -103,7 +108,16 @@ const Game = (function() {
     startGame.addEventListener('click', (event) => {
         playerDialog.close();
         event.preventDefault();
-        player1Name.textContent = player1.value;
-        player2Name.textContent = player2.value;
+
+        //global
+        player1.name = player1Input.value;
+        player2.name = player2Input.value;
+
+        player1Name.textContent = player1.name;
+        player2Name.textContent = player2.name;
+
+        // implement choice of marker
+        // update Player object marker
+        // display marker
     });
 })();

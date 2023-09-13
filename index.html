@@ -14,19 +14,23 @@
     <dialog id="player-dialog">
         <form id="selectplayer">
             <label for="player1">Player 1 (X)</label>
-            <input type="text" id="player1" name="player1" placeholder="First player's name">
+            <input type="text" id="player1-input" name="player1" placeholder="First player's name">
             <label for="player2">Player 2 (O)</label>
-            <input type="text" id="player2" name="player2" placeholder="Second player's name">
+            <input type="text" id="player2-input" name="player2" placeholder="Second player's name">
             <input type="submit" value="Start Game" id="start-game">
         </form>
     </dialog>
     <button id="show-form">Select Players</button>
     <div class="playerturn">
         <div class="playerturn-text">
-            <p>Player 1 (X): </p>
-            <p id="player1-name"></p>
-            <p>Player 2 (O): </p>
-            <p id="player2-name"></p>
+            <div data-player="1">
+                <p>X</p>
+                <p id="player1-name"></p>
+            </div>
+            <div data-player="2">
+                <p>O</p>
+                <p id="player2-name"></p>
+            </div>
         </div>
     </div>
     <div class="gameover">
