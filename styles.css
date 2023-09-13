@@ -5,7 +5,7 @@
 body {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 100px 2fr 1fr;
+    grid-template-rows: 100px 2fr 150px 150px 100px 1fr;
 }
 
 h1 {
@@ -23,7 +23,6 @@ h1 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    /* width: 330px; */
     justify-items: center;
     align-items: center;
     margin: 0 auto;
@@ -79,9 +78,23 @@ h1 {
     font-size: 30px;
     font-family: Arial;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
+    grid-template-columns: repeat(2, 200px);
     justify-content: center;
+}
+
+.highlight {
+    grid-row: 2 / 3;
+    text-align: center;
+    font-size: 30px;
+    font-family: Arial;
+    display: grid;
+    grid-template-columns: repeat(2, 200px);
+    justify-content: center;
+    background-color: green;
+}
+
+.gameover {
+    
 }
 
 .announce-winner-text {
