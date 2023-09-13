@@ -9,8 +9,6 @@ let player2 = Player('Player 2', 'O');
 // gameboard module
 const Gameboard = (() =>{
     let gameboard = new Array(9);
-    // let player1 = Player('Player 1', 'X');
-    // let player2 = Player('Player 2', 'O');
     let currentPlayer = player1;
     let gameOver = false;
     const winner = document.querySelector('.announce-winner-text');
@@ -108,16 +106,9 @@ const Game = (function() {
     startGame.addEventListener('click', (event) => {
         playerDialog.close();
         event.preventDefault();
-
-        //global
         player1.name = player1Input.value;
         player2.name = player2Input.value;
-
         player1Name.textContent = player1.name;
         player2Name.textContent = player2.name;
-
-        // implement choice of marker
-        // update Player object marker
-        // display marker
     });
 })();
